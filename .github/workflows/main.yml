@@ -3,37 +3,32 @@ name: CI - Vite React Project
 on:
   push:
     branches:
-      
-main
-pull_request:
-  branches:
-main
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      
-name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      
-name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'  # Remplacez par la version souhaitée
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Remplacez par la version souhaitée
 
       # Changez de répertoire vers 'react' avant d'installer les dépendances
-      
-name: Install dependencies
-      run: |
-        cd react
-        npm install
+      - name: Install dependencies
+        run: |
+          cd react
+          npm install
 
       # Construisez votre projet
-      
-name: Build project
-      run: |
-        cd react
-        npm run build
+      - name: Build project
+        run: |
+          cd react
+          npm run build
